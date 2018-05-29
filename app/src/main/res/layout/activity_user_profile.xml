@@ -26,7 +26,6 @@
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
 
-        android:text="Balance"
         android:textSize="30sp"
 
         app:layout_constraintBottom_toBottomOf="@+id/spCurrency"
@@ -44,7 +43,7 @@
         android:layout_marginTop="10dp"
         android:gravity="center"
 
-        android:text="Komisinis"
+        android:text="@string/fee_text"
         android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spCurrency" />
@@ -104,7 +103,7 @@
         android:layout_marginStart="10dp"
 
         android:gravity="center"
-        android:text="Pakeisti i valiuta"
+        android:text="@string/exchange_text"
         android:textSize="15sp"
 
         app:layout_constraintBottom_toBottomOf="@+id/spExchangeFrom"
@@ -116,6 +115,7 @@
         android:layout_height="50dp"
 
         android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/spExchangeFrom"
         app:layout_constraintLeft_toRightOf="@+id/tvExchangeText" />
 
@@ -128,7 +128,7 @@
 
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
-        android:text="Submit"
+        android:text="@string/submit_exchange"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spExchangeFrom" />
@@ -141,7 +141,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
 
-        android:text="X"
+        android:text="@string/clear"
         app:layout_constraintBottom_toBottomOf="@+id/etAmount"
         app:layout_constraintLeft_toRightOf="@+id/etAmount" />
 

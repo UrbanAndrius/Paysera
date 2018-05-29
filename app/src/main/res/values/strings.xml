@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Paysera</string>
+    <string name="fee_text">Komisinis mokestis</string>
+    <string name="exchange_text">Pakeisti į valiutą</string>
+    <string name="submit_exchange">Pakeisti</string>
+    <string name="clear">X</string>
 </resources>
