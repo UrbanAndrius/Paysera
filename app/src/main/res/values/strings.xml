@@ -4,4 +4,23 @@
     <string name="exchange_text">Pakeisti į valiutą</string>
     <string name="submit_exchange">Pakeisti</string>
     <string name="clear">X</string>
+    <string name="positive">Priimti</string>
+    <string name="negative">Atšaukti</string>
+    <string name="title_confirm">Konvertavimas</string>
+    <string name="title_result">Pavyko</string>
+    <string name="confirm_message">Ar norite konvertuoti %1$s %2$s į %3$s %4$s. Komisinis mokestis - %5$s %2$s. %6$s</string>
+    <string name="result_message">Jūs konvertavote %1$s %2$s į %3$s %4$s. Komisinis mokestis - %5$s %2$s. %6$s</string>
+    <string name="free">(nemokamai)</string>
+    <string name="fee">(%1$s%% komisinis mokestis)</string>
+    <string name="account_title">Mano paskyra</string>
+    <string name="balance_text">Balancas</string>
+    <string name="error">Klaida</string>
+    <string name="error_same_currency">Pasirinkote tą pačią valiutą (bandymas konvertuoti iš %1$s į %1$s)</string>
+    <string name="error_insufficient_funds">Neužtenką sąskaitoje pinigų (%1$s)</string>
+    <string name="error_negative_amount">Prašome įvesti teikiamą skaičių</string>
+    <string name="error_fee_insufficient_funds">Neužtenka sąskaitoje pinigų (%1$s). Komisinis mokestis %2$s</string>
+    <string name="fee_amount_free">(nemokamai)</string>
+    <string name="fee_amount_percentage">(%1$s%% komisinis mokestis)</string>
+    <string name="title_confirmation">Ar sutinkate?</string>
+    <string name="title_conversion_success">Konvertavimas pavyko</string>
 </resources>
