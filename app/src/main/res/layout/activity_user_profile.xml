@@ -6,6 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".UserProfile">
 
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+
+        android:text="@string/account_title"
+        android:textSize="25sp"
+
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvBalanceText"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+
+        android:layout_marginTop="10dp"
+        android:text="@string/balance_text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
     <Spinner
         android:id="@+id/spCurrency"
@@ -14,9 +40,8 @@
 
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/tvBalanceText"
+        app:layout_constraintLeft_toRightOf="@+id/tvBalanceText" />
 
     <TextView
         android:id="@+id/tvBalance"
@@ -28,10 +53,8 @@
 
         android:textSize="30sp"
 
-        app:layout_constraintBottom_toBottomOf="@+id/spCurrency"
-        app:layout_constraintLeft_toRightOf="@+id/spCurrency"
-
-        />
+        app:layout_constraintBottom_toBottomOf="@+id/tvBalanceText"
+        app:layout_constraintLeft_toRightOf="@+id/spCurrency" />
 
     <TextView
         android:id="@+id/tvFeeText"
@@ -44,7 +67,7 @@
         android:gravity="center"
 
         android:text="@string/fee_text"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spCurrency" />
 
@@ -60,7 +83,7 @@
 
     <TextView
         android:id="@+id/tvFee"
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
 
         android:layout_marginLeft="10dp"
@@ -80,6 +103,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="30dp"
         android:inputType="numberDecimal"
+        android:text="0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvFeeText" />
 
@@ -144,6 +168,5 @@
         android:text="@string/clear"
         app:layout_constraintBottom_toBottomOf="@+id/etAmount"
         app:layout_constraintLeft_toRightOf="@+id/etAmount" />
-
 
 </android.support.constraint.ConstraintLayout>
