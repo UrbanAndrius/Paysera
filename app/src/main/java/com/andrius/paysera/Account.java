@@ -3,12 +3,13 @@ package com.andrius.paysera;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Account {
     private List<Money> moneyList;
     private List<Money> moneyFeeList;
+    private int convertCount = 0;
 
     Account (List<String> currencies, List<Double> amounts) {
-
         moneyList = new ArrayList<>();
         moneyFeeList = new ArrayList<>();
         for (int i = 0; i < currencies.size(); i++) {
@@ -33,6 +34,14 @@ public class Account {
             }
         }
         return null;
+    }
+
+    public void incrementConvertCount() {
+        convertCount++;
+    }
+
+    public int getConvertCount() {
+        return convertCount;
     }
 
 }
