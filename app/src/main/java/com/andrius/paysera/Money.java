@@ -27,7 +27,7 @@ public class Money {
         }
     }
 
-    public void setScale(int scale) {
+    private void setScale(int scale) {
         this.amount = this.amount.setScale(scale, BigDecimal.ROUND_HALF_EVEN);
     }
 
@@ -36,6 +36,10 @@ public class Money {
         currencyFormatter.setCurrency(Currency.getInstance(code));
         currencyFormatter.setMaximumFractionDigits(fractionDigits);
         return currencyFormatter.format(amount);
+    }
+
+    public double getAmountDouble() {
+        return amount.doubleValue();
     }
 
     public String getCode() {
