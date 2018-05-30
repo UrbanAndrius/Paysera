@@ -9,16 +9,19 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class HttpToJson {
-
     private JSONObject jsonObject;
     private String url;
     private RequestQueue requestQueue;
 
-    HttpToJson(Context context, String url) {
+    HttpToJson(Context context) {
         requestQueue = Volley.newRequestQueue(context);
+    }
+
+    public void setUrl(String url) {
         this.url = url;
     }
 
@@ -37,11 +40,29 @@ public class HttpToJson {
         requestQueue.add(jsonObjectRequest);
     }
 
-    public void addFinishedListener(RequestQueue.RequestFinishedListener<JsonObjectRequest> listener) {
+    public void addOnFinishedListener(RequestQueue.RequestFinishedListener<JsonObjectRequest> listener) {
         requestQueue.addRequestFinishedListener(listener);
     }
 
     public JSONObject getJsonObject() {
         return jsonObject;
+    }
+
+    public String getAmount() {
+        try {
+            return jsonObject.getString("amount");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public String getCurrency() {
+        try {
+            return jsonObject.getString("currency");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
