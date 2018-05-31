@@ -30,7 +30,6 @@ public class UserProfile extends AppCompatActivity {
     Spinner spCurrency, spFeeCurrency, spExchangeFrom, spExchangeTo;
     Button btSubmit, btClear;
 
-
     Account account;
     List<String> currencies;
     List<Double> amounts;
@@ -48,9 +47,7 @@ public class UserProfile extends AppCompatActivity {
         initSpinners();
         setCurrencySelectorListener();
         initConverter();
-
         updateConvertCountText();
-
     }
 
     // Find views by ID's for this activity and link to variables
@@ -75,7 +72,6 @@ public class UserProfile extends AppCompatActivity {
                 startConversionRequest();
             }
         });
-
         btClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -180,9 +176,10 @@ public class UserProfile extends AppCompatActivity {
 
     private void updateConvertCountText() {
         int count = account.getConvertCount();
+        int freeCount = account.getFreeConvertCount();
         int free;
-        if (count < 5) {
-            free = 5 - count;
+        if (count < freeCount) {
+            free = freeCount - count;
         } else {
             free = 0;
         }
@@ -209,11 +206,11 @@ public class UserProfile extends AppCompatActivity {
             showDialogNotice(getString(R.string.error), getString(R.string.error_insufficient_funds, codeFrom));
             return;
         }
-        if (account.getConvertCount() >= 5) {
+        if (account.getConvertCount() >= account.getFreeConvertCount()) {
             if (account.getMoney(codeFrom).getAmountDouble() <
-                    Double.valueOf(getEtAmountText()) * 1.007) {
+                    Double.valueOf(getEtAmountText()) * currencyConverter.getFeePercentage() + 1.0) {
                 showDialogNotice(getString(R.string.error), getString(R.string.error_fee_insufficient_funds,
-                        codeFrom, String.valueOf(Double.valueOf(getEtAmountText()) * 0.007)));
+                        codeFrom, String.valueOf(Double.valueOf(getEtAmountText()) * currencyConverter.getFeePercentage())));
                 return;
             }
         }
@@ -251,33 +248,42 @@ public class UserProfile extends AppCompatActivity {
         account.incrementConvertCount();
         updateConvertCountText();
         etAmount.setText("");
-
     }
 
     // Generate message for dialog when user clicks Submit button
     private String generateConfirmationMessage() {
         String feeText;
-        if (account.getConvertCount() >= 5) {
-            feeText = getString(R.string.fee_amount_percentage, "0.7");
+        if (account.getConvertCount() >= account.getFreeConvertCount()) {
+            feeText = getString(R.string.fee_amount_percentage, currencyConverter.getFeePercentageFormated());
         } else {
             feeText = getString(R.string.fee_amount_free);
         }
-        return getString(R.string.confirm_message, currencyConverter.getAmountFrom(),
+        String formattedAmount = currencyConverter.getFormatedAmount(Double.valueOf(currencyConverter.getAmountFrom()),
+                currencyConverter.getCurrencyFrom());
+        String formattedFee = currencyConverter.getFormatedAmount(Double.valueOf(currencyConverter.getFeeAmount()),
+                currencyConverter.getCurrencyFrom());
+
+        return getString(R.string.confirm_message, formattedAmount,
                 currencyConverter.getCurrencyFrom(), currencyConverter.getAmountTo(),
-                currencyConverter.getCurrencyTo(), currencyConverter.getFeeAmount(), feeText);
+                currencyConverter.getCurrencyTo(),formattedFee, feeText);
     }
 
     // Generate message for dialog when conversion is successful
     private String generateConversionResultMessage() {
         String feeText;
-        if (account.getConvertCount() >= 5) {
-            feeText = getString(R.string.fee_amount_percentage, "0.7");
+        if (account.getConvertCount() >= account.getFreeConvertCount()) {
+            feeText = getString(R.string.fee_amount_percentage, currencyConverter.getFeePercentageFormated());
         } else {
             feeText = getString(R.string.fee_amount_free);
         }
-        return getString(R.string.result_message, currencyConverter.getAmountFrom(),
+        String formattedAmount = currencyConverter.getFormatedAmount(Double.valueOf(currencyConverter.getAmountFrom()),
+                currencyConverter.getCurrencyFrom());
+        String formattedFee = currencyConverter.getFormatedAmount(Double.valueOf(currencyConverter.getFeeAmount()),
+                currencyConverter.getCurrencyFrom());
+
+        return getString(R.string.result_message, formattedAmount,
                 currencyConverter.getCurrencyFrom(), currencyConverter.getAmountTo(),
-                currencyConverter.getCurrencyTo(), currencyConverter.getFeeAmount(), feeText);
+                currencyConverter.getCurrencyTo(), formattedFee, feeText);
     }
 
     // Get currency code from given spinner
