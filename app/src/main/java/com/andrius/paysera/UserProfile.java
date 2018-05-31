@@ -20,13 +20,16 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.grantland.widget.AutofitHelper;
+
 
 public class UserProfile extends AppCompatActivity {
 
-    TextView tvBalance, tvFee;
+    TextView tvBalance, tvFee, tvConvertCount;
     EditText etAmount;
     Spinner spCurrency, spFeeCurrency, spExchangeFrom, spExchangeTo;
     Button btSubmit, btClear;
+
 
     Account account;
     List<String> currencies;
@@ -45,6 +48,9 @@ public class UserProfile extends AppCompatActivity {
         initSpinners();
         setCurrencySelectorListener();
         initConverter();
+
+        updateConvertCountText();
+
     }
 
     // Find views by ID's for this activity and link to variables
@@ -58,6 +64,7 @@ public class UserProfile extends AppCompatActivity {
         btSubmit = findViewById(R.id.btSubmit);
         spFeeCurrency = findViewById(R.id.spFeeCurrency);
         btClear = findViewById(R.id.btClear);
+        tvConvertCount = findViewById(R.id.tvConvertCount);
     }
 
     // Initiate button listeners for this activity
@@ -171,6 +178,17 @@ public class UserProfile extends AppCompatActivity {
         tvFee.setText(account.getFeeMoney(currencies.get(posFee)).getFormatedAmount());
     }
 
+    private void updateConvertCountText() {
+        int count = account.getConvertCount();
+        int free;
+        if (count < 5) {
+            free = 5 - count;
+        } else {
+            free = 0;
+        }
+        tvConvertCount.setText(getString(R.string.convert_count_text, count, free));
+    }
+
     // Check if input is valid and send conversion request
     private void startConversionRequest() {
         Double amountFrom = Double.valueOf(getEtAmountText());
@@ -229,9 +247,11 @@ public class UserProfile extends AppCompatActivity {
         account.getFeeMoney(currencyFrom).addAmount(new BigDecimal(feeAmount));
 
         updateBalanceText();
-        account.incrementConvertCount();
-        etAmount.setText("");
         showDialogNotice(getString(R.string.title_conversion_success), generateConversionResultMessage());
+        account.incrementConvertCount();
+        updateConvertCountText();
+        etAmount.setText("");
+
     }
 
     // Generate message for dialog when user clicks Submit button
