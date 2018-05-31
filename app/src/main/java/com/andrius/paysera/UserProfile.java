@@ -174,6 +174,7 @@ public class UserProfile extends AppCompatActivity {
         tvFee.setText(account.getFeeMoney(currencies.get(posFee)).getFormatedAmount());
     }
 
+    // Update total counversion count and left free conversions
     private void updateConvertCountText() {
         int count = account.getConvertCount();
         int freeCount = account.getFreeConvertCount();
@@ -208,9 +209,12 @@ public class UserProfile extends AppCompatActivity {
         }
         if (account.getConvertCount() >= account.getFreeConvertCount()) {
             if (account.getMoney(codeFrom).getAmountDouble() <
-                    Double.valueOf(getEtAmountText()) * currencyConverter.getFeePercentage() + 1.0) {
+                    Double.valueOf(getEtAmountText()) * (currencyConverter.getFeePercentage() + 1.0)) {
+                String formatted = currencyConverter.getFormatedAmount(Double.valueOf(getEtAmountText())
+                                * currencyConverter.getFeePercentage(), codeFrom);
+
                 showDialogNotice(getString(R.string.error), getString(R.string.error_fee_insufficient_funds,
-                        codeFrom, String.valueOf(Double.valueOf(getEtAmountText()) * currencyConverter.getFeePercentage())));
+                        formatted, codeFrom));
                 return;
             }
         }
