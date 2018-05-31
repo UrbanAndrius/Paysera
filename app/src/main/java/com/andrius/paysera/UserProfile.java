@@ -20,8 +20,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.grantland.widget.AutofitHelper;
-
 
 public class UserProfile extends AppCompatActivity {
 
@@ -174,7 +172,7 @@ public class UserProfile extends AppCompatActivity {
         tvFee.setText(account.getFeeMoney(currencies.get(posFee)).getFormatedAmount());
     }
 
-    // Update total counversion count and left free conversions
+    // Update total conversion count and left free conversions
     private void updateConvertCountText() {
         int count = account.getConvertCount();
         int freeCount = account.getFreeConvertCount();
@@ -295,10 +293,10 @@ public class UserProfile extends AppCompatActivity {
         return currencies.get(spinner.getSelectedItemPosition());
     }
 
-
+    // Check if EditText field is empty
     private String getEtAmountText() {
         if (etAmount.getText().toString().isEmpty()) {
-            return "0.00";
+            return "0.0";
         }
         return etAmount.getText().toString();
     }
