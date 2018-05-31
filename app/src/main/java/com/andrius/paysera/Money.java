@@ -32,7 +32,7 @@ public class Money {
     }
 
     public String getFormatedAmount() {
-        NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.getDefault());
+        NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.ENGLISH);
         currencyFormatter.setCurrency(Currency.getInstance(code));
         currencyFormatter.setMaximumFractionDigits(fractionDigits);
         return currencyFormatter.format(amount);
