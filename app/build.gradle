@@ -33,4 +33,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     compile 'com.android.volley:volley:1.0.0'
+    compile 'me.grantland:autofittextview:0.2.+'
 }
