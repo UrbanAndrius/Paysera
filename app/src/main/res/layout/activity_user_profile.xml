@@ -1,172 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
     tools:context=".UserProfile">
 
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_light"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="@string/account_title"
+            android:textColor="@android:color/white"
+            android:textSize="26sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-
-        android:text="@string/account_title"
-        android:textSize="25sp"
-
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="@android:color/holo_blue_light">
 
-    <TextView
-        android:id="@+id/tvBalanceText"
-        android:layout_width="wrap_content"
+        <me.grantland.widget.AutofitTextView
+            android:id="@+id/tvBalanceText"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:padding="3dp"
+            android:text="@string/balance_text"
+            android:textColor="@android:color/black"
+            android:textSize="42sp" />
+
+        <Spinner
+
+            android:id="@+id/spCurrency"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp" />
+
+
+        <me.grantland.widget.AutofitTextView
+            android:id="@+id/tvBalance"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:gravity="start"
+            android:maxLines="1"
+            android:textColor="@android:color/white"
+            android:textSize="32sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-
         android:layout_marginTop="10dp"
-        android:text="@string/balance_text"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+        android:background="@android:color/holo_blue_light">
 
-    <Spinner
-        android:id="@+id/spCurrency"
-        android:layout_width="wrap_content"
+        <me.grantland.widget.AutofitTextView
+            android:id="@+id/tvFeeText"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:maxLines="2"
+            android:minLines="2"
+            android:text="@string/fee_text"
+            android:textColor="@android:color/black"
+            android:textSize="32sp" />
+
+        <Spinner
+            android:id="@+id/spFeeCurrency"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp" />
+
+        <me.grantland.widget.AutofitTextView
+            android:id="@+id/tvFee"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:gravity="start"
+            android:maxLines="1"
+            android:textColor="@android:color/white"
+            android:textSize="32sp" />
+
+
+    </LinearLayout>
+
+    <me.grantland.widget.AutofitTextView
+        android:id="@+id/tvConvertCount"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvBalanceText"
-        app:layout_constraintLeft_toRightOf="@+id/tvBalanceText" />
-
-    <TextView
-        android:id="@+id/tvBalance"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-
-        android:textSize="30sp"
-
-        app:layout_constraintBottom_toBottomOf="@+id/tvBalanceText"
-        app:layout_constraintLeft_toRightOf="@+id/spCurrency" />
-
-    <TextView
-        android:id="@+id/tvFeeText"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:gravity="center"
+        android:background="@android:color/holo_blue_light"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:textColor="@android:color/white"
+        android:textSize="42sp" />
 
-        android:text="@string/fee_text"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spCurrency" />
 
-    <Spinner
-        android:id="@+id/spFeeCurrency"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvFeeText"
-        app:layout_constraintLeft_toRightOf="@+id/tvFeeText" />
-
-    <TextView
-        android:id="@+id/tvFee"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        android:gravity="center"
-
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvFeeText"
-        app:layout_constraintLeft_toRightOf="@+id/spFeeCurrency" />
-
-    <EditText
-        android:id="@+id/etAmount"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
-        android:inputType="numberDecimal"
-        android:text="0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFeeText" />
-
-    <Spinner
-        android:id="@+id/spExchangeFrom"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etAmount" />
+        android:background="@android:color/holo_blue_light">
 
-    <TextView
-        android:id="@+id/tvExchangeText"
-        android:layout_width="wrap_content"
+        <me.grantland.widget.AutofitTextView
+            android:id="@+id/tvInsertText"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:maxLines="2"
+            android:text="@string/insert_amount"
+            android:textColor="@android:color/black"
+            android:textSize="42sp" />
+
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/etAmount"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/tvInsertText"
+            android:layout_toLeftOf="@id/btClear"
+            android:layout_toRightOf="@id/tvInsertText"
+            android:layout_toStartOf="@id/btClear"
+            android:inputType="numberDecimal"
+            android:textColor="@android:color/white"
+            android:textCursorDrawable="@drawable/cursor"
+            android:textSize="22sp"
+            app:backgroundTint="@color/colorPrimaryDark" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btClear"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
+            android:text="@string/clear"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            app:backgroundTint="@color/colorPrimaryDark" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/holo_blue_light">
 
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
 
-        android:gravity="center"
-        android:text="@string/exchange_text"
-        android:textSize="15sp"
+        <Spinner
+            android:id="@+id/spExchangeFrom"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp" />
 
-        app:layout_constraintBottom_toBottomOf="@+id/spExchangeFrom"
-        app:layout_constraintLeft_toRightOf="@+id/spExchangeFrom" />
+        <me.grantland.widget.AutofitTextView
+            android:id="@+id/tvExchangeText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/spExchangeFrom"
+            android:layout_toLeftOf="@id/spExchangeTo"
+            android:layout_toRightOf="@id/spExchangeFrom"
+            android:layout_toStartOf="@id/spExchangeTo"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@string/exchange_text"
+            android:textColor="@android:color/black"
+            android:textSize="42sp" />
 
-    <Spinner
-        android:id="@+id/spExchangeTo"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        <Spinner
+            android:id="@+id/spExchangeTo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp" />
 
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/spExchangeFrom"
-        app:layout_constraintLeft_toRightOf="@+id/tvExchangeText" />
 
-    <Button
+    </RelativeLayout>
+
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btSubmit"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-
         android:layout_marginLeft="20dp"
-
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
         android:text="@string/submit_exchange"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spExchangeFrom" />
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:backgroundTint="@color/colorPrimaryDark" />
 
-    <Button
-        android:id="@+id/btClear"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-
-        android:text="@string/clear"
-        app:layout_constraintBottom_toBottomOf="@+id/etAmount"
-        app:layout_constraintLeft_toRightOf="@+id/etAmount" />
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
