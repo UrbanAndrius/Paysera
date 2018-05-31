@@ -148,7 +148,7 @@ public class UserProfile extends AppCompatActivity {
         spCurrency.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                tvBalance.setText(account.getMoney(currencies.get(position)).getFormatedAmount());
+                tvBalance.setText(account.getMoney(currencies.get(position)).getFormattedAmount());
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
@@ -156,7 +156,7 @@ public class UserProfile extends AppCompatActivity {
         spFeeCurrency.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                tvFee.setText(account.getFeeMoney(currencies.get(position)).getFormatedAmount());
+                tvFee.setText(account.getFeeMoney(currencies.get(position)).getFormattedAmount());
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
@@ -168,8 +168,8 @@ public class UserProfile extends AppCompatActivity {
         int posBalance = spCurrency.getSelectedItemPosition();
         int posFee = spFeeCurrency.getSelectedItemPosition();
 
-        tvBalance.setText(account.getMoney(currencies.get(posBalance)).getFormatedAmount());
-        tvFee.setText(account.getFeeMoney(currencies.get(posFee)).getFormatedAmount());
+        tvBalance.setText(account.getMoney(currencies.get(posBalance)).getFormattedAmount());
+        tvFee.setText(account.getFeeMoney(currencies.get(posFee)).getFormattedAmount());
     }
 
     // Update total conversion count and left free conversions

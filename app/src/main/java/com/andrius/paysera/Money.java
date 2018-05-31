@@ -31,7 +31,7 @@ public class Money {
         this.amount = this.amount.setScale(scale, BigDecimal.ROUND_HALF_EVEN);
     }
 
-    public String getFormatedAmount() {
+    public String getFormattedAmount() {
         NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.ENGLISH);
         currencyFormatter.setCurrency(Currency.getInstance(code));
         currencyFormatter.setMaximumFractionDigits(fractionDigits);
