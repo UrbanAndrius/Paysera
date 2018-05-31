@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Paysera</string>
     <string name="fee_text">Komisinis mokestis</string>
-    <string name="exchange_text">Pakeisti į valiutą</string>
-    <string name="submit_exchange">Pakeisti</string>
+    <string name="exchange_text">konvertuoti į</string>
+    <string name="submit_exchange">Konvertuoti</string>
     <string name="clear">X</string>
     <string name="positive">Priimti</string>
     <string name="negative">Atšaukti</string>
@@ -13,7 +13,7 @@
     <string name="free">(nemokamai)</string>
     <string name="fee">(%1$s%% komisinis mokestis)</string>
     <string name="account_title">Mano paskyra</string>
-    <string name="balance_text">Balancas</string>
+    <string name="balance_text">Balansas</string>
     <string name="error">Klaida</string>
     <string name="error_same_currency">Pasirinkote tą pačią valiutą (bandymas konvertuoti iš %1$s į %1$s)</string>
     <string name="error_insufficient_funds">Neužtenką sąskaitoje pinigų (%1$s)</string>
@@ -23,4 +23,6 @@
     <string name="fee_amount_percentage">(%1$s%% komisinis mokestis)</string>
     <string name="title_confirmation">Ar sutinkate?</string>
     <string name="title_conversion_success">Konvertavimas pavyko</string>
+    <string name="insert_amount">Įveskite\nsumą</string>
+    <string name="convert_count_text">Konvertavimų (%1$d) Liko nemokamų (%2$d)</string>
 </resources>
