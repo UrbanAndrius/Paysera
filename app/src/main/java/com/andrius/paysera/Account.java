@@ -5,6 +5,7 @@ import java.util.List;
 
 
 public class Account {
+    private final int freeConvertCount = 5;
     private List<Money> moneyList;
     private List<Money> moneyFeeList;
     private int convertCount = 0;
@@ -42,6 +43,10 @@ public class Account {
 
     public int getConvertCount() {
         return convertCount;
+    }
+
+    public int getFreeConvertCount() {
+        return freeConvertCount;
     }
 
 }
