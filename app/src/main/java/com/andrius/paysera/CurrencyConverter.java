@@ -11,6 +11,7 @@ import java.util.Currency;
 
 
 public class CurrencyConverter {
+    private final double feePercentage = 0.007;
     private HttpToJson httpToJson;
     private Account account;
 
@@ -59,12 +60,12 @@ public class CurrencyConverter {
     // Get result after Json object is retrieved
     private void retrieveAmountTo() {
         amountTo = httpToJson.getAmount();
-        if (account.getConvertCount() >= 5) {
-            feeAmount = getFormatedAmount(Double.valueOf(amountFrom) * 0.007, currencyFrom);
+        if (account.getConvertCount() >= account.getFreeConvertCount()) {
+            feeAmount = getFormatedAmount(Double.valueOf(amountFrom) * feePercentage, currencyFrom);
         }
     }
 
-    private String getFormatedAmount(double amount, String currencyCode) {
+    public String getFormatedAmount(double amount, String currencyCode) {
         NumberFormat currencyFormatter = NumberFormat.getInstance();
         int fractionDigits = Currency.getInstance(currencyCode).getDefaultFractionDigits();
         currencyFormatter.setMaximumFractionDigits(fractionDigits);
@@ -99,6 +100,16 @@ public class CurrencyConverter {
 
     public String getTotalAmount() {
         return String.valueOf(Double.valueOf(amountFrom) + Double.valueOf(feeAmount));
+    }
+
+    public double getFeePercentage() {
+        return feePercentage;
+    }
+
+    public String getFeePercentageFormated() {
+        NumberFormat defaultFormat = NumberFormat.getInstance();
+        defaultFormat.setMaximumFractionDigits(4);
+        return defaultFormat.format(feePercentage * 100.0);
     }
 
 
