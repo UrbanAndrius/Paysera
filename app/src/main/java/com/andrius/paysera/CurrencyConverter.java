@@ -6,6 +6,9 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 
+import java.text.NumberFormat;
+import java.util.Currency;
+
 
 public class CurrencyConverter {
     private HttpToJson httpToJson;
@@ -57,8 +60,16 @@ public class CurrencyConverter {
     private void retrieveAmountTo() {
         amountTo = httpToJson.getAmount();
         if (account.getConvertCount() >= 5) {
-            feeAmount = String.valueOf(Double.valueOf(amountFrom) * 0.007);
+            feeAmount = getFormatedAmount(Double.valueOf(amountFrom) * 0.007, currencyFrom);
         }
+    }
+
+    private String getFormatedAmount(double amount, String currencyCode) {
+        NumberFormat currencyFormatter = NumberFormat.getInstance();
+        int fractionDigits = Currency.getInstance(currencyCode).getDefaultFractionDigits();
+        currencyFormatter.setMaximumFractionDigits(fractionDigits);
+        currencyFormatter.setMinimumFractionDigits(fractionDigits);
+        return currencyFormatter.format(amount);
     }
 
     // Start Http request to receive Json object
